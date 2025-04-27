@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,700;1,300;1,700&display=swap');
+
+html, body, #root, .App {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Rubik', sans-serif;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  background: #172a3b;
+}
+
+#root .segment {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  background: url('./assets/background.png');
+  background-repeat: repeat;
+}
+
+main {
+  min-height: calc(100% - 8.2rem);
+  box-sizing: border-box;
+  flex: 1;
+  background: #172a3be6;
+}
+
+.ui.segment {
+  background: rgb(255 255 255 / 10%);
+  backdrop-filter: blur(3px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid rgb(255 255 255 / 20%);
+}
+
+.home {
+  display: grid;
+  grid-template: 10rem 1fr / 1fr 1fr 20rem;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.home .user-summary {
+  grid-column: 1 / -1;
+  grid-row: 1 / 2;
+}
