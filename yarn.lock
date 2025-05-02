@@ -549,6 +549,27 @@
     exenv "^1.2.2"
     prop-types "^15.6.2"
 
+"@stytch/core@2.49.1":
+  version "2.49.1"
+  resolved "https://registry.yarnpkg.com/@stytch/core/-/core-2.49.1.tgz#0df00742668fc46fab3310e657448b9a702e1b37"
+  integrity sha512-xSW6UfICpY+LoWdTk9f8jO+0gXvzZBc9WGYQTz42UmXtJW+BZJVnZN9n+kkonXpbASQfGqjsVdQnI4KLiLiyJQ==
+  dependencies:
+    uuid "8.3.2"
+
+"@stytch/react@^19.5.1":
+  version "19.5.1"
+  resolved "https://registry.yarnpkg.com/@stytch/react/-/react-19.5.1.tgz#7ce735c3fe815cf7b3b6793b6a4652afaf241abd"
+  integrity sha512-6ajlfIX/lrL14LaFicq8GkumSEWs9zZVpGb5Ui86N1kLpWJsOSFsrPL0KEJs3YIKyvbI00KCGKGqYZEQCKaWQQ==
+
+"@stytch/vanilla-js@^5.23.0":
+  version "5.23.0"
+  resolved "https://registry.yarnpkg.com/@stytch/vanilla-js/-/vanilla-js-5.23.0.tgz#00fd22b3a4f5390d663e250fc8ff5f3373e9392f"
+  integrity sha512-RKO4SAtEiFDtvc4++s1x3R4B8G7EpJ4Rt+Jz1PAbwnLuvkCjk9ezD18DLA1lZDggI9Ap4vHx7Ov4fs0a3fGRCQ==
+  dependencies:
+    "@stytch/core" "2.49.1"
+    "@types/google-one-tap" "^1.2.0"
+    type-fest "4.15.0"
+
 "@types/babel__core@^7.20.5":
   version "7.20.5"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.20.5.tgz#3df15f27ba85319caa07ba08d0721889bb39c017"
@@ -637,6 +658,11 @@
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-1.0.7.tgz#4158d3105276773d5b7695cd4834b1722e4f37a8"
   integrity sha512-w28IoSUCJpidD/TGviZwwMJckNESJZXFu7NBZ5YJ4mEUnNraUn9Pm8HSZm/jDF1pDWYKspWE7oVphigUPRakIQ==
+
+"@types/google-one-tap@^1.2.0":
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/@types/google-one-tap/-/google-one-tap-1.2.6.tgz#854bdf1a51f9bc3d61f3c55d44135b653c523583"
+  integrity sha512-REmJsXVHvKb/sgI8DF+7IesMbDbcsEokHBqxU01ENZ8d98UPWdRLhUCtxEm9bhNFFg6PJGy7PNFdvovp0hK3jA==
 
 "@types/json-schema@^7.0.15":
   version "7.0.15"
@@ -1620,6 +1646,11 @@ type-check@^0.4.0, type-check@~0.4.0:
   dependencies:
     prelude-ls "^1.2.1"
 
+type-fest@4.15.0:
+  version "4.15.0"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-4.15.0.tgz#21da206b89c15774cc718c4f2d693e13a1a14a43"
+  integrity sha512-tB9lu0pQpX5KJq54g+oHOLumOx+pMep4RaM6liXh2PKmVRFF+/vAtUP0ZaJ0kOySfVNjF6doBWPHhBhISKdlIA==
+
 update-browserslist-db@^1.1.1:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/update-browserslist-db/-/update-browserslist-db-1.1.3.tgz#348377dd245216f9e7060ff50b15a1b740b75420"
@@ -1634,6 +1665,11 @@ uri-js@^4.2.2:
   integrity sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==
   dependencies:
     punycode "^2.1.0"
+
+uuid@8.3.2:
+  version "8.3.2"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
+  integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
 
 victory-vendor@^36.6.8:
   version "36.9.2"

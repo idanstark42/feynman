@@ -8,6 +8,8 @@ import {
 import 'semantic-ui-css/semantic.min.css'
 import './App.css'
 
+import { useAuthData } from './logic/lilo'
+
 import Topbar from './components/topbar'
 import Bottombar from './components/bottombar'
 
@@ -16,8 +18,14 @@ import Courses from './pages/courses'
 import Videos from './pages/videos'
 import Player from './pages/player'
 
+import Auth from './pages/auth'
+
 export default function App() {
+  const { loggedIn } = useAuthData()
+  console.log('loggedIn', loggedIn)
+
   return <div className='App'>
+    {!loggedIn ? <Auth /> :
     <Router>
       <Topbar />
         <Routes>
@@ -28,5 +36,6 @@ export default function App() {
         </Routes>
       <Bottombar />
     </Router>
+  }
   </div>
 }
