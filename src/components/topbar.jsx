@@ -1,8 +1,9 @@
 import Logo from './logo'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-
 import { Menu, Segment } from 'semantic-ui-react'
+
+import LogoutButton from './logout'
 
 export default function Topbar () {
   const [activeItem, setActiveItem] = useState('home')
@@ -33,6 +34,10 @@ export default function Topbar () {
           {item.label}
         </Menu.Item>
       ))}
+
+      <Menu.Item position='right'>
+        <LogoutButton />
+      </Menu.Item>
     </Menu>
   </Segment>
 }

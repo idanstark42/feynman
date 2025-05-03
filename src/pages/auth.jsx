@@ -1,25 +1,52 @@
-import React from 'react'
+import { useEffect, useState } from 'react'
+import { Products } from '@stytch/vanilla-js'
 import {
-  Header,
-  Divider,
-  Segment,
-  Input
-} from 'semantic-ui-react'
+  StytchLogin,
+  StytchPasswordReset,
+  useStytch,
+  useStytchSession
+} from '@stytch/react'
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from 'react-router-dom'
 
 export default function Auth() {
+  const stytch = useStytch()
+  const { session } = useStytchSession();
+
+  useEffect(() => {
+    if (session) {
+      window.location.href = '/'
+    }
+
+    const token = new URLSearchParams(window.location.search).get('token')
+    const tokenType = new URLSearchParams(window.location.search).get('stytch_token_type')
+
+    if (tokenType === 'reset_password') {
+      window.location.href = `/reset-password?token=${token}`
+    }
+  }, [stytch, session])
+
+  const config = {
+    passwordOptions: {
+      loginExpirationMinutes: 30,
+      loginRedirectURL: window.location.origin + '/authenticate',
+      resetPasswordExpirationMinutes: 30,
+      resetPasswordRedirectURL: window.location.origin + '/reset-password',
+    },
+    products: [
+      Products.passwords,
+    ],
+  }
+
   return <div className='auth centering'>
-    <Segment className='auth-segment'>
-      <form className='email-and-password centering'>
-        <Header inverted textAlign='center'>Sign in with email and password</Header>
-        <Input type='email' placeholder='Email' />
-        <Input type='password' placeholder='Password' />
-        <button className='ui primary button' type='submit'>Sign in</button>
-      </form>
-      <Divider vertical inverted>Or</Divider>
-      <Divider horizontal inverted>Or</Divider>
-      <div className='google centering'>
-        <button className='ui primary button' type='button'>Sign in with Google</button>
-      </div>
-    </Segment>
+    <Router>
+      <Routes>
+        <Route path='/' element={<StytchLogin config={config} />} />
+        <Route path='/reset-password' element={<StytchPasswordReset config={config} passwordResetToken={new URLSearchParams(window.location.search).get('token')} />} />
+      </Routes>
+    </Router>
   </div>
 }
