@@ -39,18 +39,6 @@ main {
   border: 1px solid rgb(255 255 255 / 20%);
 }
 
-.home {
-  display: grid;
-  grid-template: 10rem 1fr / 1fr 1fr 20rem;
-  padding: 1rem;
-  gap: 1rem;
-}
-
-.home .user-summary {
-  grid-column: 1 / -1;
-  grid-row: 1 / 2;
-}
-
 .centering {
   display: flex;
   justify-content: center;
@@ -115,4 +103,22 @@ main {
 .primary.button {
   background: #172a3b !important;
   color: white !important;
+}
+
+.rtl {
+  direction: rtl;
+}
+
+.rtl #topbar {
+  direction: rtl;
+}
+
+.rtl #topbar .right.item {
+  margin-left: unset !important;
+  margin-right: auto !important;
+}
+
+.rtl .ui.header > .icon +.content {
+  padding-right: .75rem;
+  padding-left: 0 !important;
 }

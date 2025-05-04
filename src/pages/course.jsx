@@ -1,5 +1,5 @@
 import Page from '../components/page'
 
-export default function Videos () {
+export default function Course () {
   return <Page></Page>
 }

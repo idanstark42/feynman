@@ -4,6 +4,8 @@ import { StytchProvider } from '@stytch/react'
 import { StytchUIClient } from '@stytch/vanilla-js'
 import App from './App.jsx'
 
+import './logic/i18n'
+
 const stytch = new StytchUIClient(import.meta.env.VITE_STYTCH_PUBLIC_TOKEN)
 
 createRoot(document.getElementById('root')).render(

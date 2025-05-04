@@ -12,6 +12,8 @@ import {
   Route
 } from 'react-router-dom'
 
+import Logo from '../assets/light-mode-favicon.png'
+
 export default function Auth() {
   const stytch = useStytch()
   const { session } = useStytchSession();
@@ -41,11 +43,21 @@ export default function Auth() {
     ],
   }
 
+  const styles = {
+    fontFamily: 'Rubik, sans-serif',
+    colors: {
+      primary: '#172a3b'
+    },
+    logo: {
+      logoImageUrl: Logo
+    }
+  }
+
   return <div className='auth centering'>
     <Router>
       <Routes>
-        <Route path='/' element={<StytchLogin config={config} />} />
-        <Route path='/reset-password' element={<StytchPasswordReset config={config} passwordResetToken={new URLSearchParams(window.location.search).get('token')} />} />
+        <Route path='/' element={<StytchLogin config={config} styles={styles} />} />
+        <Route path='/reset-password' element={<StytchPasswordReset config={config} styles={styles} passwordResetToken={new URLSearchParams(window.location.search).get('token')} />} />
       </Routes>
     </Router>
   </div>
