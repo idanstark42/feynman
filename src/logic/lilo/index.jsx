@@ -14,8 +14,17 @@ export function LiloProvider({ children, settings }) {
   const [lilo, setLilo] = useState(null) // the Lilo instance
 
   useEffect(() => {
-    setLilo(new Lilo(stytch, settings, data, setData, loading, setLoading))
+    const lilo = new Lilo(stytch, settings, data, setData, loading, setLoading)
+    setLilo(lilo)
+
+    ;(async () => {
+      await lilo.init()
+    }) ()
   }, [])
+
+  useEffect(() => {
+    console.log(data)
+  }, [data])
 
   if (!lilo) {
     return <Loader />

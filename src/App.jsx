@@ -24,14 +24,11 @@ import Auth from './pages/auth'
 
 const liloSettings = {
   collections: {
-    courses: {
+    videos: {
       type: 'collection',
-      createIfEmpty: true,
-    },
-    users: {
-      type: 'singleton',
-      createIfEmpty: true,
-    },
+      collection: 'videos',
+      createIfEmpty: false,
+    }
   }
 }
 

@@ -16,24 +16,24 @@ export default class Lilo {
     this.setData = setData
     this.loading = loading
     this.setLoading = setLoading
-    this.clients = Object.fromEntries(Object.entries(settings.collections).map(([collectionName, collectionSettings]) => [collectionName, this.loadClient(collectionName, collectionSettings)]))
+    this.clients = Object.fromEntries(Object.entries(settings.collections).map(([key, collectionSettings]) => [key, this.loadClient(key, collectionSettings)]))
   }
 
-  loadClient (collectionName, collectionSettings) {
-    const { type, ...settings } = collectionSettings
+  loadClient (key, collectionSettings) {
+    const { type } = collectionSettings
     const Client = DATABASE_CLIENTS[type]
     if (!Client) {
       throw new Error(`Unknown database client type: ${type}`)
     }
-    const client = new Client(this.stytch, collectionName, collectionSettings)
+    const client = new Client(this.stytch, key, collectionSettings)
     return client
   }
 
   async init () {
     this.setLoading(true)
     await Promise.all(Object.entries(this.clients)
-      .map(([collectionName, client]) => client.init()
-        .then(data => this.setData(prevData => ({ ...prevData, [collectionName]: data })))))
+      .map(([key, client]) => client.init()
+        .then(data => this.setData(prevData => ({ ...prevData, [key]: data })))))
     this.setLoading(false)
   }
 
