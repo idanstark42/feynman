@@ -3,7 +3,8 @@ import DatabaseClient from './database-client'
 export default class CollectionDatabaseClient extends DatabaseClient {
   async init () {
     const { createIfEmpty } = this.settings
-    return await this.read().then(data => {
+    const projection = this.settings.protectedFields ? this.settings.protectedFields.reduce((acc, field) => ({ ...acc, [field]: 0 }), {}) : undefined
+    return await this.read({ projection }).then(data => {
       if (!data.length && createIfEmpty) {
         return this.create({}).then(() => this.read())
       }
@@ -11,8 +12,8 @@ export default class CollectionDatabaseClient extends DatabaseClient {
     })
   }
 
-  async read(filter) {
-    return await this.request('read', {}, Object.assign({}, filter, this.filter), this.options)
+  async read({ filter=undefined, projection=undefined } = {}) {
+    return await this.request('read', {}, Object.assign({}, filter, this.filter), projection ? { ...this.options, projection } : this.options)
   }
 
   async update(filter, data) {

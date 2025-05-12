@@ -28,6 +28,7 @@ const liloSettings = {
       type: 'collection',
       collection: 'videos',
       createIfEmpty: false,
+      protectedFields: ['video_id']
     }
   }
 }
@@ -38,16 +39,19 @@ export default function App() {
   console.log('loggedIn', loggedIn)
 
   return <div className={`App ${i18n.dir()}`}>
-    {!loggedIn ? <Auth /> :
+    {/* {!loggedIn ? <Auth /> :
     <Router>
-      <Topbar />
         <Routes>
           <Route path='/' element={<LiloProvider settings={liloSettings}><Home /></LiloProvider>} />
           <Route path='/course/:id' element={<Course />} />
           <Route path='/course/:courseId/player/:videoId' element={<Player />} />
         </Routes>
-      <Bottombar />
     </Router>
-  }
+  } */}
+    <Topbar />
+    <LiloProvider settings={liloSettings}>
+      <Home />
+    </LiloProvider>
+    <Bottombar />
   </div>
 }

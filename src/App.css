@@ -122,3 +122,10 @@ main {
   padding-right: .75rem;
   padding-left: 0 !important;
 }
+
+.home {
+  display: grid;
+  grid-template: repeat(1, 1fr) / 1fr 40rem;
+  gap: 1rem;
+  padding: 1rem;
+}

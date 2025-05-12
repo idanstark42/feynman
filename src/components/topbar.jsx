@@ -14,14 +14,13 @@ export default function Topbar () {
   }, [])
 
   const loadSectionsFromURL = () => {
-    const sections = [{ key: 'home', content: t('titles.home'), link: '/' }]
-    const path = window.location.pathname.split('/').slice(1).filter(Boolean)
-    if (path.length === 0) {
-      sections[sections.length - 1].active = true
-      sections[sections.length - 1].link = null
-      return sections
-    }
-    console.log('path', path)
+    const sections = []
+    // const path = window.location.pathname.split('/').slice(1).filter(Boolean)
+    // if (path.length === 0) {
+    //   sections[sections.length - 1].active = true
+    //   sections[sections.length - 1].link = null
+    //   return sections
+    // }
   }
 
   console.log('sections', sections)

@@ -11,5 +11,9 @@ export default function LogoutButton () {
     window.location.href = '/'
   }, [stytch])
 
+  if (!stytch.session.isValid) {
+    return null
+  }
+
   return <button className='ui primary button' onClick={logout}>{t('titles.logout')}</button>
 }
