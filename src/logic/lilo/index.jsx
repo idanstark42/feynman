@@ -22,15 +22,11 @@ export function LiloProvider({ children, settings }) {
     }) ()
   }, [])
 
-  useEffect(() => {
-    console.log(data)
-  }, [data])
-
   if (!lilo) {
     return <Loader />
   }
 
-  return <LiloContext.Provider value={lilo}>{children}</LiloContext.Provider>
+  return <LiloContext.Provider value={{ lilo, data }}>{children}</LiloContext.Provider>
 }
 
 export function useLilo() {

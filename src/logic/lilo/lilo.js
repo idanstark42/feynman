@@ -25,8 +25,7 @@ export default class Lilo {
     if (!Client) {
       throw new Error(`Unknown database client type: ${type}`)
     }
-    const client = new Client(this.stytch, key, collectionSettings)
-    return client
+    return new Client(this.stytch, key, collectionSettings)
   }
 
   async init () {
