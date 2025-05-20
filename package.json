@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@mux/mux-player-react": "^3.4.0",
+    "@mux/mux-uploader-react": "^1.2.0",
     "@stytch/react": "^19.5.1",
     "@stytch/vanilla-js": "^5.23.0",
     "i18next": "^25.0.2",

@@ -13,13 +13,9 @@ import useAuthData from './logic/lilo/use-auth-data'
 
 import { LiloProvider } from './logic/lilo'
 
-import Topbar from './components/topbar'
-import Bottombar from './components/bottombar'
-
 import Home from './pages/home'
-import Course from './pages/course'
+import Admin from './pages/admin'
 import Player from './pages/player'
-
 import Auth from './pages/auth'
 
 const liloSettings = {
@@ -39,19 +35,13 @@ export default function App() {
   console.log('loggedIn', loggedIn)
 
   return <div className={`App ${i18n.dir()}`}>
-    {/* {!loggedIn ? <Auth /> :
     <Router>
-        <Routes>
-          <Route path='/' element={<LiloProvider settings={liloSettings}><Home /></LiloProvider>} />
-          <Route path='/course/:id' element={<Course />} />
-          <Route path='/course/:courseId/player/:videoId' element={<Player />} />
-        </Routes>
+      <Routes>
+        <Route path='/' element={<LiloProvider settings={liloSettings}><Home /></LiloProvider>} />
+        <Route path='/auth' element={<Auth />} />
+        <Route path='/admin' element={<LiloProvider settings={liloSettings}><Admin /></LiloProvider>} />
+        <Route path='/course/:courseId/player/:videoId' element={<Player />} />
+      </Routes>
     </Router>
-  } */}
-    <Topbar />
-    <LiloProvider settings={liloSettings}>
-      <Home />
-    </LiloProvider>
-    <Bottombar />
   </div>
 }

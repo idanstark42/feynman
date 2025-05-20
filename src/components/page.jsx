@@ -1,5 +1,12 @@
+import Topbar from './topbar'
+import Bottombar from './bottombar'
+
 export default function Page ({ children, ...props }) {
-  return <main {...props}>
-    {children}
-  </main>
+  return <>
+    <Topbar />
+    <main {...props}>
+      {children}
+    </main>
+    <Bottombar />
+  </>
 }

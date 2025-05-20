@@ -1,4 +1,5 @@
 import uploadImage from './images-client'
+import getVideoUploadURL from './video-client'
 
 import SingletonDatabaseClient from './singleton-database-client'
 import CollectionDatabaseClient from './collection-database-client'
@@ -19,6 +20,10 @@ export default class Lilo {
     this.clients = Object.fromEntries(Object.entries(settings.collections).map(([key, collectionSettings]) => [key, this.loadClient(key, collectionSettings)]))
   }
 
+  get loggedIn () {
+    return Boolean(this.stytch.session.getTokens())
+  }
+
   loadClient (key, collectionSettings) {
     const { type } = collectionSettings
     const Client = DATABASE_CLIENTS[type]
@@ -37,6 +42,10 @@ export default class Lilo {
   }
 
   async uploadImage (file) {
-    return await uploadImage(file)
+    return await uploadImage(this.stytch, file)
+  }
+
+  async getVideoUploadURL () {
+    return await getVideoUploadURL(this.stytch)
   }
 }

@@ -20,7 +20,8 @@ export default function Auth() {
 
   useEffect(() => {
     if (session) {
-      window.location.href = '/'
+      const params = new URLSearchParams(window.location.search)
+      window.location.href = params.get('callback') || '/'
     }
 
     const token = new URLSearchParams(window.location.search).get('token')
@@ -54,11 +55,9 @@ export default function Auth() {
   }
 
   return <div className='auth centering'>
-    <Router>
-      <Routes>
-        <Route path='/' element={<StytchLogin config={config} styles={styles} />} />
-        <Route path='/reset-password' element={<StytchPasswordReset config={config} styles={styles} passwordResetToken={new URLSearchParams(window.location.search).get('token')} />} />
-      </Routes>
-    </Router>
+    <Routes>
+      <Route path='/' element={<StytchLogin config={config} styles={styles} />} />
+      <Route path='/reset-password' element={<StytchPasswordReset config={config} styles={styles} passwordResetToken={new URLSearchParams(window.location.search).get('token')} />} />
+    </Routes>
   </div>
 }

@@ -1,4 +1,4 @@
-export default async function uploadImage (file) {
+export default async function uploadImage (stytch, file) {
   const formData = new FormData()
   formData.append('image', file)
   const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/image`, {
