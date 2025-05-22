@@ -1,7 +1,7 @@
-import { Placeholder } from 'semantic-ui-react'
+import { Card, Loader } from 'semantic-ui-react'
 
 export default function VideoEntryLoading () {
-  return <div className='video-entry'>
-    <Placeholder fluid style={{ width: '100%', height: '100%' }}></Placeholder>
-  </div>
+  return <Card className='video-entry'>
+    <Loader />
+  </Card>
 }

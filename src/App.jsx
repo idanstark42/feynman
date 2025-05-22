@@ -24,7 +24,7 @@ const liloSettings = {
       type: 'collection',
       collection: 'videos',
       createIfEmpty: false,
-      protectedFields: ['video_id']
+      protectedFields: ['playbackId']
     }
   }
 }
@@ -40,7 +40,7 @@ export default function App() {
         <Route path='/' element={<LiloProvider settings={liloSettings}><Home /></LiloProvider>} />
         <Route path='/auth' element={<Auth />} />
         <Route path='/admin' element={<LiloProvider settings={liloSettings}><Admin /></LiloProvider>} />
-        <Route path='/course/:courseId/player/:videoId' element={<Player />} />
+        <Route path='/player/:videoId' element={<LiloProvider settings={liloSettings}><Player /></LiloProvider>} />
       </Routes>
     </Router>
   </div>

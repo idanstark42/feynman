@@ -3,11 +3,14 @@ import DatabaseClient from './database-client'
 export default class CollectionDatabaseClient extends DatabaseClient {
   async init () {
     const { createIfEmpty } = this.settings
+    const loggedIn = Boolean(this.stytch.session.getTokens())
+    const enrichedRecordsFilter = loggedIn ? {} : { public: true }
     const projection = this.settings.protectedFields ? this.settings.protectedFields.reduce((acc, field) => ({ ...acc, [field]: 0 }), {}) : undefined
-    return await this.read({ projection }).then(data => {
+    return await Promise.all([this.read({ projection }), this.read({ filter: enrichedRecordsFilter })]).then(([data, enrichment]) => {
       if (!data.length && createIfEmpty) {
         return this.create({}).then(() => this.read())
       }
+      data.forEach(datum => Object.assign(datum, enrichment.find(entry => entry._id === datum._id) || {}))
       return data
     })
   }

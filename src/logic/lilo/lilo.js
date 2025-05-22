@@ -1,5 +1,5 @@
 import uploadImage from './images-client'
-import getVideoUploadURL from './video-client'
+import { getVideoUploadURL, getVideoTokens } from './video-client'
 
 import SingletonDatabaseClient from './singleton-database-client'
 import CollectionDatabaseClient from './collection-database-client'
@@ -47,5 +47,9 @@ export default class Lilo {
 
   async getVideoUploadURL () {
     return await getVideoUploadURL(this.stytch)
+  }
+
+  async getVideoTokens (playbackId) {
+    return await getVideoTokens(playbackId)
   }
 }
