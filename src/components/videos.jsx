@@ -61,7 +61,7 @@ export default function ({ editable }) {
       />
     </div>
     <CardGroup className='videos'>
-      {(searchResults || []).map(video => <VideoEntry key={video._id} video={video} />)}
+      {(searchResults || []).map(video => <VideoEntry key={video._id} video={video} editable={editable} />)}
     </CardGroup>
   </>
 }

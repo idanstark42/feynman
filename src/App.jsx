@@ -12,6 +12,7 @@ import './App.css'
 import useAuthData from './logic/lilo/use-auth-data'
 
 import { LiloProvider } from './logic/lilo'
+import { ModalProvider } from './logic/modal'
 
 import Home from './pages/home'
 import Admin from './pages/admin'
@@ -35,13 +36,15 @@ export default function App() {
   console.log('loggedIn', loggedIn)
 
   return <div className={`App ${i18n.dir()}`}>
-    <Router>
-      <Routes>
-        <Route path='/' element={<LiloProvider settings={liloSettings}><Home /></LiloProvider>} />
-        <Route path='/auth' element={<Auth />} />
-        <Route path='/admin' element={<LiloProvider settings={liloSettings}><Admin /></LiloProvider>} />
-        <Route path='/player/:videoId' element={<LiloProvider settings={liloSettings}><Player /></LiloProvider>} />
-      </Routes>
-    </Router>
+    <ModalProvider liloSettings={liloSettings}>
+      <Router>
+        <Routes>
+          <Route path='/' element={<LiloProvider settings={liloSettings}><Home /></LiloProvider>} />
+          <Route path='/auth' element={<Auth />} />
+          <Route path='/admin' element={<LiloProvider settings={liloSettings}><Admin /></LiloProvider>} />
+          <Route path='/player/:videoId' element={<LiloProvider settings={liloSettings}><Player /></LiloProvider>} />
+        </Routes>
+      </Router>
+    </ModalProvider>
   </div>
 }

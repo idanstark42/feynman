@@ -2,7 +2,7 @@ import MuxPlayer from '@mux/mux-player-react';
 import { useEffect, useState } from 'react';
 import { useLilo } from '../logic/lilo';
 
-export default function VideoPlayer ({ video }) {
+export default function VideoPlayer ({ video, ...props }) {
   const { lilo } = useLilo()
   const [tokens, setTokens] = useState(null)
 
@@ -17,5 +17,5 @@ export default function VideoPlayer ({ video }) {
     return '' 
   }
 
-  return <MuxPlayer playbackId={video.playbackId.id} tokens={tokens} />
+  return <MuxPlayer playbackId={video.playbackId.id} tokens={tokens} {...props} />
 }

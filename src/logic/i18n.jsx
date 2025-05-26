@@ -27,7 +27,9 @@ i18n
           },
           titles: {
             home: 'Home',
-            logout: 'Logout'
+            user: 'User',
+            logout: 'Logout',
+            login: 'Login'
           }
         }
       },
@@ -41,10 +43,9 @@ i18n
           },
           titles: {
             home: 'בית',
-            courses: 'קורסים',
+            user: 'משתמש',
             logout: 'יציאה',
-            yourCourses: 'הקורסים שלך',
-            reccomendedCrourses: 'קורסים מומלצים',
+            login: 'כניסה'
           }
         }
       }

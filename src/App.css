@@ -32,7 +32,7 @@ main {
   background: #172a3be6;
 }
 
-.ui.segment {
+.ui.segment, .modal {
   background: rgb(255 255 255 / 10%);
   backdrop-filter: blur(3px);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
@@ -150,8 +150,48 @@ main {
 .video-entry .thumbnail {
   width: 100%;
   height: 8rem;
+
+  background-position: center;
+  background-size: cover;
 }
 
 .video-entry .content {
   padding: 0.5rem !important;
+}
+
+.user.segment {
+  position: fixed !important;
+  top: 4.5rem;
+  right: 0.8rem;
+  min-width: 12rem !important;
+  z-index: 10;
+  background-color: #ffffff50 !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+.modal.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: rgb(0 0 0 / 80%);
+  backdrop-filter: blur(3px);
+}
+
+.modal {
+  border-radius: .28571429rem;
+  background-color: rgb(255 255 255 / 60%);
+  padding: 1rem;
+}
+
+.editing.modal {
+  width: 40rem;
+  min-height: 20rem;
 }

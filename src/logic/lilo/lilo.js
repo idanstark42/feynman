@@ -52,4 +52,19 @@ export default class Lilo {
   async getVideoTokens (playbackId) {
     return await getVideoTokens(playbackId)
   }
+
+  async saveThumbnail(playbackId, thumbnailTime) {
+    const videoTokens = await this.getVideoTokens(playbackId)
+    const token = videoTokens['thumbnail-token']
+    if (!token) throw new Error('Missing thumbnail token')
+
+    const downloadResponse = await fetch(`https://image.mux.com/${playbackId}/thumbnail.jpg?time=${thumbnailTime}&token=${token}`)
+    if (!downloadResponse.ok) throw new Error(`Failed to fetch thumbnail: ${response.statusText}`)
+
+    const blob = await downloadResponse.blob()
+    const file = new File([blob], `${playbackId}_${thumbnailTime}.jpg`, { type: 'image/jpeg' })
+
+    const uploadResponse = await this.uploadImage(file)
+    return uploadResponse.result.url
+  }
 }
