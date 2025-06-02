@@ -156,7 +156,19 @@ main {
 }
 
 .video-entry .content {
-  padding: 0.5rem !important;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem 0.5rem 0 0.5rem !important;
+}
+
+.video-entry .description {
+  flex: 1;
+  margin: 0 !important;
+}
+
+.video-entry .buttons {
+  flex: 0;
 }
 
 .user.segment {

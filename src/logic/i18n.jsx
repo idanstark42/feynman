@@ -1,4 +1,4 @@
-import i18n, { dir } from 'i18next'
+import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 
@@ -28,8 +28,18 @@ i18n
           titles: {
             home: 'Home',
             user: 'User',
+            about: 'About'
+          },
+          actions: {
+            add: 'add',
+            remove: 'remove',
+            play: 'play',
+            search: 'search',
             logout: 'Logout',
             login: 'Login'
+          },
+          texts: {
+            about: 'about'
           }
         }
       },
@@ -44,8 +54,18 @@ i18n
           titles: {
             home: 'בית',
             user: 'משתמש',
+            about: 'על האתר'
+          },
+          actions: {
+            add: 'הוספה',
+            remove: 'הסרה',
+            play: 'הפעלה',
+            search: 'חיפוש',
             logout: 'יציאה',
             login: 'כניסה'
+          },
+          texts: {
+            about: 'על האתר'
           }
         }
       }

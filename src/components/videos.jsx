@@ -6,11 +6,13 @@ import { useLilo } from '../logic/lilo'
 import Loader from '../components/loader'
 import VideoEntry from './video-entry'
 import VideoEntryLoading from "./video-entry-loading"
+import { useTranslation } from "react-i18next"
 
 const SEARCH_THROTTLE = 300
 
 export default function ({ editable }) {
   const { data } = useLilo()
+  const { t } = useTranslation()
   const [showLoader, setShowLoader] = useState(true)
 
   const searchTimeoutRef = useRef()
@@ -27,9 +29,11 @@ export default function ({ editable }) {
 
   const search = (query) => {
     query = query.toLowerCase()
-    return data.videos.filter(video => [video.metadata.title, ...(video.metadata.tags || []), video.metadata.description]
-      .filter(Boolean)
-      .some(field => field.toLowerCase().includes(query)))
+    return data.videos.filter(video =>
+      [video.metadata.name, ...(video.metadata.tags || []), video.metadata.description]
+        .filter(Boolean)
+        .some(field => field.toLowerCase().includes(query))
+    )
   }
 
   return showLoader || !(data.videos) || data.videos.length === 0 ? <>
@@ -43,7 +47,7 @@ export default function ({ editable }) {
     <div className='videos-search ui input fluid'>
       <input
         value={searchValue}
-        placeholder='Search...'
+        placeholder={t('actions.search') + '...'}
         onChange={e => {
           const value = e.target.value
           setSearchLoading(true)

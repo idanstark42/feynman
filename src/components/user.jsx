@@ -17,7 +17,7 @@ export default function LogoutButton () {
   }, [lilo.stytch])
 
   if (!lilo.loggedIn) {
-    return <Link className='ui primary button' to='/auth'><Icon name='user' />{t('titles.login')}</Link>
+    return <Link className='ui primary button' to='/auth'><Icon name='user' />{t('actions.login')}</Link>
   }
 
   const { user } = lilo.stytch.user.getInfo()
@@ -37,7 +37,7 @@ export default function LogoutButton () {
         </HeaderSubheader>
       </Header>
       {admin ? <Link className='ui fluid button' to='/admin' style={{ marginBottom: '0.8rem' }}>Admin</Link> : ''}
-      <div className='ui fluid button' onClick={logout} ><Icon name='sign-out' />{t('titles.logout')}</div>
+      <div className='ui fluid button' onClick={logout} ><Icon name='sign-out' />{t('actions.logout')}</div>
     </Segment> : ''}
   </>
 }
