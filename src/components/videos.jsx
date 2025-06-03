@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next"
 const SEARCH_THROTTLE = 300
 
 export default function ({ editable }) {
-  const { data } = useLilo()
+  const { data, lilo } = useLilo()
   const { t } = useTranslation()
   const [showLoader, setShowLoader] = useState(true)
 

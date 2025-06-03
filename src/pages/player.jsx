@@ -1,6 +1,6 @@
-import Page from '../components/page'
 import { Segment } from 'semantic-ui-react'
 
+import Page from '../components/page'
 import VideoPlayer from '../components/video-player'
 import { useLilo } from '../logic/lilo'
 import { useParams } from 'react-router-dom'

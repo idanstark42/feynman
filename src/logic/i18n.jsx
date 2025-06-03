@@ -36,7 +36,8 @@ i18n
             play: 'play',
             search: 'search',
             logout: 'Logout',
-            login: 'Login'
+            login: 'Login',
+            edit: 'edit'
           },
           texts: {
             about: 'about'
@@ -62,7 +63,8 @@ i18n
             play: 'הפעלה',
             search: 'חיפוש',
             logout: 'יציאה',
-            login: 'כניסה'
+            login: 'כניסה',
+            edit: 'עריכה'
           },
           texts: {
             about: 'על האתר'

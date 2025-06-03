@@ -9,6 +9,8 @@ const DATABASE_CLIENTS = {
   collection: CollectionDatabaseClient
 }
 
+const ADMIN_ID = import.meta.env.VITE_ADMIN_ID
+
 export default class Lilo {
   constructor (stytch, settings, data, setData, loading, setLoading) {
     this.stytch = stytch
@@ -22,6 +24,19 @@ export default class Lilo {
 
   get loggedIn () {
     return Boolean(this.stytch.session.getTokens())
+  }
+
+  get userInfo () {
+    if (!this.loggedIn) return null
+
+    const info = this.stytch.user.getInfo().user
+    
+    info.name = info.trusted_metadata.name || ((info.name.first_name && info.name.last_name) ? `${info.name.first_name} ${info.name.last_name}` : '')
+    info.username = info.trusted_metadata.username || info.name || info.emails[0].email.split('@')[0]
+    info.admin = info.user_id === ADMIN_ID
+    info.email = info.trusted_metadata.email || info.emails[0].email
+    
+    return info
   }
 
   loadClient (key, collectionSettings) {
@@ -66,5 +81,16 @@ export default class Lilo {
 
     const uploadResponse = await this.uploadImage(file)
     return uploadResponse.result.url
+  }
+
+  async updateUser (user) {
+    user.user_id = this.userInfo.user_id
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/user/update`, {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${this.stytch.session.getTokens().session_token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify(user)
+    })
+    console.log(response)
+    return response
   }
 }

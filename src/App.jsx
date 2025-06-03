@@ -9,15 +9,14 @@ import { useTranslation } from 'react-i18next'
 import 'semantic-ui-css/semantic.min.css'
 import './App.css'
 
-import useAuthData from './logic/lilo/use-auth-data'
-
 import { LiloProvider } from './logic/lilo'
 import { ModalProvider } from './logic/modal'
 
+import Auth from './pages/auth'
 import Home from './pages/home'
 import Admin from './pages/admin'
 import Player from './pages/player'
-import Auth from './pages/auth'
+import EditUser from './pages/edit-user'
 
 const liloSettings = {
   collections: {
@@ -32,8 +31,6 @@ const liloSettings = {
 
 export default function App() {
   const { i18n } = useTranslation()
-  const { loggedIn } = useAuthData()
-  console.log('loggedIn', loggedIn)
 
   return <div className={`App ${i18n.dir()}`}>
     <ModalProvider liloSettings={liloSettings}>
@@ -42,6 +39,7 @@ export default function App() {
           <Route path='/' element={<LiloProvider settings={liloSettings}><Home /></LiloProvider>} />
           <Route path='/auth' element={<Auth />} />
           <Route path='/admin' element={<LiloProvider settings={liloSettings}><Admin /></LiloProvider>} />
+          <Route path='/edit-user' element={<LiloProvider settings={liloSettings}><EditUser /></LiloProvider>} />
           <Route path='/player/:videoId' element={<LiloProvider settings={liloSettings}><Player /></LiloProvider>} />
         </Routes>
       </Router>

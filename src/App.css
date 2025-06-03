@@ -207,3 +207,15 @@ main {
   width: 40rem;
   min-height: 20rem;
 }
+
+.edit-user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-user > .segment {
+  max-width: 60vw;
+  min-width: 20rem;
+  min-height: 30rem;
+}
