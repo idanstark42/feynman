@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { useLilo } from '../logic/lilo'
@@ -13,6 +13,16 @@ export default function User () {
     await lilo.stytch.session.revoke()
     window.location.href = '/'
   }, [lilo.stytch])
+  
+  useEffect(() => {
+      const close = () => setVisible(false)
+  
+      document.addEventListener('mousedown', close)
+  
+      return () => {
+        document.removeEventListener('mousedown', close)
+      }
+    }, [setVisible])
 
   if (!lilo.loggedIn) {
     return <Link className='ui primary button' to='/auth'><Icon name='user' />{t('actions.login')}</Link>
@@ -22,7 +32,7 @@ export default function User () {
 
   return <>
     <div className='ui button' onClick={() => setVisible(!visible)}><Icon name='user' />{t('titles.user')}</div>
-    {visible ? <Segment className='user' >
+    {visible ? <Segment className='user' onMouseDown={e => { e.preventDefault(); e.stopPropagation() }}>
       <Header>
         {username}
         <HeaderSubheader>

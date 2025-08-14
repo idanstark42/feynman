@@ -41,6 +41,15 @@ i18n
           },
           texts: {
             about: 'about'
+          },
+          days: {
+            sunday: 'sunday',
+            monday: 'monday',
+            tuesday: 'tuesday',
+            wednesday: 'wednesday',
+            thursday: 'thursday',
+            friday: 'friday',
+            saturday: 'saturday'
           }
         }
       },
@@ -68,6 +77,15 @@ i18n
           },
           texts: {
             about: 'על האתר'
+          },
+          days: {
+            sunday: 'ראשון',
+            monday: 'שני',
+            tuesday: 'שלישי',
+            wednesday: 'רביעי',
+            thursday: 'חמישי',
+            friday: 'שישי',
+            saturday: 'שבת'
           }
         }
       }

@@ -15,6 +15,7 @@ import { ModalProvider } from './logic/modal'
 import Auth from './pages/auth'
 import Home from './pages/home'
 import Admin from './pages/admin'
+import UserCalendar from './pages/calendar'
 import Player from './pages/player'
 import EditUser from './pages/edit-user'
 
@@ -39,8 +40,9 @@ export default function App() {
           <Route path='/' element={<LiloProvider settings={liloSettings}><Home /></LiloProvider>} />
           <Route path='/auth' element={<Auth />} />
           <Route path='/admin' element={<LiloProvider settings={liloSettings}><Admin /></LiloProvider>} />
+          <Route path='/user' element={<LiloProvider settings={liloSettings}><UserCalendar /></LiloProvider>} />
           <Route path='/edit-user' element={<LiloProvider settings={liloSettings}><EditUser /></LiloProvider>} />
-          <Route path='/player/:videoId' element={<LiloProvider settings={liloSettings}><Player /></LiloProvider>} />
+          {/* <Route path='/player/:videoId' element={<LiloProvider settings={liloSettings}><Player /></LiloProvider>} /> */}
         </Routes>
       </Router>
     </ModalProvider>
