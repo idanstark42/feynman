@@ -26,8 +26,6 @@ export function LiloProvider({ children, settings }) {
     return <Loader />
   }
 
-  console.log('data', data)
-
   return <LiloContext.Provider value={{ lilo, data }}>{children}</LiloContext.Provider>
 }
 

@@ -1,4 +1,6 @@
 
+import { overlap } from './date'
+
 const BACKEND_URL = import.meta.env.VITE_CALENDAR_URL
 
 const HTTP_OPTIONS = {
@@ -25,6 +27,12 @@ calendar.getUserEvents = async user => {
 
 calendar.getTimeRangeEvents = async (start, end) => {
   const response = await action('getTimeRangeEvents', { start, end })
+  const json = await response.json()
+  return json.events.map(event => ({ title: event.title, start: new Date(event.start), end: new Date(event.end) }))
+}
+
+calendar.getOpenEvents = async () => {
+  const response = await action('getOpenEvents')
   const json = await response.json()
   return json.events.map(event => ({ title: event.title, start: new Date(event.start), end: new Date(event.end) }))
 }
