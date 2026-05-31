@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-navy: #071832;
+  --color-brand-accent: #3b82f6; /* Electric blue accent to replace Netflix red */
+  --color-brand-glow: #00f2fe;
+}
+
+/* That's it! Your custom styles go right below here */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #f5f5f5;
+  background: linear-gradient(135deg, #0b1422, #000000);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.premium-card {
+  background: rgba(7, 24, 50, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(7, 24, 50, 0.4);
+}
+.premium-card:hover {
+  border-color: rgba(59, 130, 246, 0.4);
+  background: rgba(7, 24, 50, 0.45);
+}
