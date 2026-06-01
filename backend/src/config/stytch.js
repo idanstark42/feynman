@@ -1,4 +1,4 @@
-import * as stytch from "@stytch/stytch-node"
+import * as stytch from "stytch"
 
 const client = new stytch.Client({
   project_id: process.env.STYTCH_PROJECT_ID,
