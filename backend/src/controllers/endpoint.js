@@ -1,4 +1,4 @@
-export default endpoint = async (callback, next) => {
+const endpoint = async (callback, next) => {
   try {
     const response = await callback()
 
@@ -9,3 +9,5 @@ export default endpoint = async (callback, next) => {
     next(error)
   }
 }
+
+export default endpoint
