@@ -20,11 +20,11 @@ class AuthController {
       }
 
       return { user }
-    }, next)
+    }, res, next)
   }
 
   async me(req, res) {
-    return endpoint(() => ({ user: req.user }), next)
+    return endpoint(() => ({ user: req.user }), res, next)
   }
 }
 

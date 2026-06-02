@@ -1,4 +1,4 @@
-const endpoint = async (callback, next) => {
+const endpoint = async (callback, res, next) => {
   try {
     const response = await callback()
 

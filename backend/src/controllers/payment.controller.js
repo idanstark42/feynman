@@ -8,7 +8,7 @@ class PaymentController {
       const result = await paymentService.createPaymentIntent(req.user._id, videoId, amount)
 
       return { redirectUrl: result.redirectUrl }
-    }, next)
+    }, res, next)
   }
 
   async callback(req, res, next) {
@@ -16,7 +16,7 @@ class PaymentController {
       const { order_id } = req.query
       await paymentService.markAsPaid(order_id)
       return { message: "Payment confirmed" }
-    }, next)
+    }, res, next)
   }
 }
 

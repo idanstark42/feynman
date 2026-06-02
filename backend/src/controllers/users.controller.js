@@ -4,40 +4,40 @@ import endpoint from "./endpoint.js"
 
 class UsersController {
   async getMe(req, res) {
-    return endpoint(() => ({ user: req.user }), next)
+    return endpoint(() => ({ user: req.user }), res, next)
   }
 
   async getAll(req, res, next) {
     endpoint(async () => {
       const users = await userService.getAllUsers()
       return { data: users }
-    }, next)
+    }, res, next)
   }
 
   async updateMe(req, res, next) {
     endpoint(async () => {
       const updated = await userService.updateUser(req.user._id, req.body)
       return { data: updated }
-    }, next)
+    }, res, next)
   }
 
   async deleteMe(req, res, next) {
     endpoint(async () => {
       await userService.deleteUser(req.user._id)
-    }, next)
+    }, res, next)
   }
 
   async deleteUser(req, res, next) {
     endpoint(async () => {
       await userService.deleteUser(req.params.id)
-    }, next)
+    }, res, next)
   }
 
   async updateRole(req, res, next) {
     endpoint(async () => {
       const updated = await userService.updateUser(req.params.id, { role: req.body.role || ROLES.USER })
       return { data: updated }
-    }, next)
+    }, res, next)
   }
 }
 
