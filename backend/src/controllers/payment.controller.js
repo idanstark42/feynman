@@ -1,9 +1,9 @@
 import paymentService from "../services/payment.service.js"
-import Controller from "./controller.js"
+import endpoint from "./endpoint.js"
 
-class PaymentController extends Controller {
+class PaymentController {
   async payForVideo(req, res, next) {
-    this.endpoint(async () => {
+    endpoint(async () => {
       const { videoId, amount } = req.body
       const result = await paymentService.createPaymentIntent(req.user._id, videoId, amount)
 
@@ -12,7 +12,7 @@ class PaymentController extends Controller {
   }
 
   async callback(req, res, next) {
-    this.endpoint(async () => {
+    endpoint(async () => {
       const { order_id } = req.query
       await paymentService.markAsPaid(order_id)
       return { message: "Payment confirmed" }

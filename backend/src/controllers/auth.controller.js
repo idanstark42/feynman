@@ -1,10 +1,10 @@
 import stytchClient from "../config/stytch.js"
 import User from "../models/User.js"
-import Controller from "./controller.js"
+import endpoint from "./endpoint.js"
 
-class AuthController extends Controller {
+class AuthController {
   async login(req, res, next) {
-    this.endpoint(async () => {
+    endpoint(async () => {
       const { sessionToken } = req.body
 
       const authResponse = await stytchClient.sessions.authenticate({ session_token: sessionToken })
@@ -24,7 +24,7 @@ class AuthController extends Controller {
   }
 
   async me(req, res) {
-    return this.endpoint(() => ({ user: req.user }), next)
+    return endpoint(() => ({ user: req.user }), next)
   }
 }
 
