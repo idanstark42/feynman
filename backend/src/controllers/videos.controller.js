@@ -39,7 +39,7 @@ class VideosController {
   async create(req, res, next) {
     // Now we just accept standard JSON metadata from the frontend
     endpoint(async () => {
-      const video = await videoService.saveVideoRecord(req.body);
+      const video = await videoService.createVideo(req.body);
       return { data: video };
     }, res, next);
   }

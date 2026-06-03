@@ -4,7 +4,7 @@ import videoRepository from "../repositories/video.repository.js";
 import cloudinaryService from "./cloudinary.service.js";
 
 class VideoService {
-  async createVideo(file, metadata) {
+  async createVideo(data) {
     // 2. Commit asset pointers to the Database (No fs.unlink cleanup needed!)
     return videoRepository.create({
       title: metadata.title,
