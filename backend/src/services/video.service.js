@@ -1,9 +1,18 @@
 import fs from "fs"
 
-import videoRepository from "../repositories/video.repository.js";
-import cloudinaryService from "./cloudinary.service.js";
+import videoRepository from "../repositories/video.repository";
+import cloudinaryService from "./cloudinary.service"
 
 class VideoService {
+
+  constructor (videoStorageService) {
+    this.videoStorageService = videoStorageService
+  }
+
+  async getSignature() {
+    return this.videoStorageService.getUploadSignature()
+  }
+
   async createVideo(data) {
     // 2. Commit asset pointers to the Database (No fs.unlink cleanup needed!)
     return videoRepository.create({
@@ -11,7 +20,7 @@ class VideoService {
       description: metadata.description,
       category: metadata.category,
       videoUrl: metadata.videoUrl,
-      cloudinaryPublicId: metadata.cloudinaryPublicId,
+      assetId: metadata.assetId,
       duration: metadata.duration
     });
   }
@@ -31,12 +40,11 @@ class VideoService {
   }
 
   async deleteVideo(id) {
-    const video =
-      await videoRepository.findById(id);
+    const video = await videoRepository.findById(id);
 
-    if (video?.cloudinaryPublicId) {
-      await cloudinaryService.deleteVideo(
-        video.cloudinaryPublicId
+    if (video?.assetId) {
+      await this.videoStorageService.deleteVideo(
+        video.assetId
       );
     }
 
@@ -44,4 +52,4 @@ class VideoService {
   }
 }
 
-export default new VideoService();
+export default new VideoService(cloudinaryService);

@@ -4,36 +4,9 @@ import cloudinary from "../config/cloudinary.js";
 
 class VideosController {
   async getSignature(req, res, next) {
-    try {
-      const timestamp = Math.round(new Date().getTime() / 1000);
-      
-      // ONLY include timestamp in the signing parameters object
-      const paramsToSign = {
-        timestamp: timestamp
-      };
-
-      if (!process.env.CLOUDINARY_API_SECRET) {
-        return res.status(500).json({ error: "Backend environment variable CLOUDINARY_API_SECRET is missing." });
-      }
-
-      // Generate signature using ONLY the timestamp
-      const signature = cloudinary.utils.api_sign_request(
-        paramsToSign,
-        process.env.CLOUDINARY_API_SECRET
-      );
-
-      return res.status(200).json({
-        signature,
-        timestamp,
-        apiKey: process.env.CLOUDINARY_API_KEY,
-        cloudName: process.env.CLOUDINARY_CLOUD_NAME
-      });
-    } catch (error) {
-      return res.status(500).json({ 
-        error: "Cloudinary signing exception", 
-        message: error.message 
-      });
-    }
+    endpoint(async () => {
+      return await videoService.getUploadSignature()
+    }, res, next);
   }
 
   async create(req, res, next) {

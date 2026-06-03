@@ -20,7 +20,7 @@ export default function AdminDashboard() {
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-4 py-1.5 rounded text-xs font-bold tracking-wide transition capitalize ${
+              className={`px-4 py-1.5 rounded cursor-pointer text-xs font-bold tracking-wide transition capitalize ${
                 activeTab === tab ? 'bg-sky-800 text-white shadow' : 'text-neutral-400 hover:text-neutral-200'
               }`}
             >

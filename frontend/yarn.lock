@@ -587,6 +587,11 @@
   resolved "https://registry.npmjs.org/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.60.4.tgz"
   integrity sha512-QVTUovf40zgTqlFVrKA1uXMVvU2QWEFWfAH8Wdc48IxLvrJMQVMBRjuQyUpzZCDkakImib9eVazbWlC6ksWtJw==
 
+"@stytch/react@^20.0.9":
+  version "20.0.9"
+  resolved "https://registry.yarnpkg.com/@stytch/react/-/react-20.0.9.tgz#beb5b3cfd12a7696c28665043e5645b8c4574712"
+  integrity sha512-xR7fCxjltYsQPrk5cAcHU+R4wDm+gssGcYsIRadSkfV0mC2U24oaNCzG9Yk2P84r5tGAXvvA47y/rMrJo7HSPg==
+
 "@tailwindcss/node@4.3.0":
   version "4.3.0"
   resolved "https://registry.npmjs.org/@tailwindcss/node/-/node-4.3.0.tgz"

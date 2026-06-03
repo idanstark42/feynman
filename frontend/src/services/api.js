@@ -1,5 +1,7 @@
 // Backend Service Stubs - Connect to your Express app here
 
+const BACKEND = import.meta.env.VITE_BACKEND_URL
+
 export const api = {
   // Video & Course Data
   getCourses: async () => {

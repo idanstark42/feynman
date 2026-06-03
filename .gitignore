@@ -11,6 +11,7 @@ backend/node_modules
 backend/dist
 backend/dist-ssr
 backend/*.local
+backend/.env
 
 # Editor directories and files
 backend/.vscode/*
@@ -37,6 +38,7 @@ frontend/node_modules
 frontend/dist
 frontend/dist-ssr
 frontend/*.local
+frontend/.env
 
 # Editor directories and files
 frontend/.vscode/*

@@ -43,10 +43,10 @@ export default function HomeScreen() {
             <p className="text-xs text-neutral-400 mt-1 max-w-xl">Gain immediate streaming access to all comprehensive mathematical derivations, lecture archives, and deep dives.</p>
           </div>
           <div className="flex gap-3">
-            <button onClick={() => handlePaymentRedirect('subscription')} className="bg-brand-accent hover:bg-blue-600 px-4 py-2 rounded text-xs font-bold transition shadow-lg whitespace-nowrap">
+            <button onClick={() => handlePaymentRedirect('subscription')} className="bg-brand-accent cursor-pointer hover:bg-blue-600 px-4 py-2 rounded text-xs font-bold transition shadow-lg whitespace-nowrap">
               Monthly All-Access Pass
             </button>
-            <button onClick={() => handlePaymentRedirect('single')} className="bg-neutral-800 hover:bg-neutral-700 px-4 py-2 rounded text-xs font-bold transition border border-neutral-700 whitespace-nowrap">
+            <button onClick={() => handlePaymentRedirect('single')} className="bg-neutral-800 cursor-pointer hover:bg-neutral-700 px-4 py-2 rounded text-xs font-bold transition border border-neutral-700 whitespace-nowrap">
               Pay Per Video
             </button>
           </div>
