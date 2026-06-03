@@ -9,7 +9,7 @@ class VideosController {
       
       // Generate the signature using Cloudinary's SDK
       const signature = cloudinary.utils.api_sign_request(
-        { timestamp, source: "uw", resource_type: "video" }, 
+        { timestamp, resource_type: "video" }, 
         process.env.CLOUDINARY_API_SECRET // Your secret key remains safe on the backend
       );
 
