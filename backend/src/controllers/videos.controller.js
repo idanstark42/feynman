@@ -7,20 +7,32 @@ class VideosController {
     try {
       const timestamp = Math.round(new Date().getTime() / 1000);
       
-      // Generate the signature using Cloudinary's SDK
+      // ONLY include timestamp in the signing parameters object
+      const paramsToSign = {
+        timestamp: timestamp
+      };
+
+      if (!process.env.CLOUDINARY_API_SECRET) {
+        return res.status(500).json({ error: "Backend environment variable CLOUDINARY_API_SECRET is missing." });
+      }
+
+      // Generate signature using ONLY the timestamp
       const signature = cloudinary.utils.api_sign_request(
-        { timestamp, resource_type: "video" }, 
-        process.env.CLOUDINARY_API_SECRET // Your secret key remains safe on the backend
+        paramsToSign,
+        process.env.CLOUDINARY_API_SECRET
       );
 
-      res.status(200).json({
+      return res.status(200).json({
         signature,
         timestamp,
         apiKey: process.env.CLOUDINARY_API_KEY,
         cloudName: process.env.CLOUDINARY_CLOUD_NAME
       });
     } catch (error) {
-      next(error);
+      return res.status(500).json({ 
+        error: "Cloudinary signing exception", 
+        message: error.message 
+      });
     }
   }
 
