@@ -5,20 +5,14 @@ import cloudinaryService from "./cloudinary.service.js";
 
 class VideoService {
   async createVideo(file, metadata) {
-    const uploaded = await cloudinaryService.uploadVideo(file.path);
-
-    // SUCCESS CLEANUP: Delete the local temp file asynchronously
-    fs.unlink(file.path, (err) => {
-      if (err) console.error("Failed to delete temp file:", err);
-    });
-
+    // 2. Commit asset pointers to the Database (No fs.unlink cleanup needed!)
     return videoRepository.create({
       title: metadata.title,
       description: metadata.description,
       category: metadata.category,
-      videoUrl: uploaded.url,
-      cloudinaryPublicId: uploaded.publicId,
-      duration: uploaded.duration
+      videoUrl: metadata.videoUrl,
+      cloudinaryPublicId: metadata.cloudinaryPublicId,
+      duration: metadata.duration
     });
   }
 
