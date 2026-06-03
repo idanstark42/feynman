@@ -1,10 +1,16 @@
+import fs from "fs"
+
 import videoRepository from "../repositories/video.repository.js";
 import cloudinaryService from "./cloudinary.service.js";
 
 class VideoService {
   async createVideo(file, metadata) {
-    const uploaded =
-      await cloudinaryService.uploadVideo(file.path);
+    const uploaded = await cloudinaryService.uploadVideo(file.path);
+
+    // SUCCESS CLEANUP: Delete the local temp file asynchronously
+    fs.unlink(file.path, (err) => {
+      if (err) console.error("Failed to delete temp file:", err);
+    });
 
     return videoRepository.create({
       title: metadata.title,

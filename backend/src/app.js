@@ -26,8 +26,6 @@ app.use(morgan("dev"))
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-app.use("/uploads", express.static(path.join(__dirname, "../uploads")))
-
 app.get("/health", (_, res) => {
   res.status(200).json({
     status: "ok"
