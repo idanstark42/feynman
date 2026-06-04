@@ -1,6 +1,5 @@
 import videoService from "../services/video.service.js"
 import endpoint from "./endpoint.js"
-import cloudinary from "../config/cloudinary.js";
 
 class VideosController {
   async getSignature(req, res, next) {
