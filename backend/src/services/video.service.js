@@ -16,12 +16,12 @@ class VideoService {
   async createVideo(data) {
     // 2. Commit asset pointers to the Database (No fs.unlink cleanup needed!)
     return videoRepository.create({
-      title: metadata.title,
-      description: metadata.description,
-      category: metadata.category,
-      videoUrl: metadata.videoUrl,
-      assetId: metadata.assetId,
-      duration: metadata.duration
+      title: data.title,
+      description: data.description,
+      category: data.category,
+      videoUrl: data.videoUrl,
+      assetId: data.assetId,
+      duration: data.duration
     });
   }
 
