@@ -30,7 +30,7 @@ export class CloudinaryService extends VideoService {
       ...options
     };
 
-    console.log(this.cloudinary.config())
+    console.log(paramsToSign)
 
     // Generate the cryptographic signature using Cloudinary apiSecret
     const signature = this.cloudinary.utils.sign_request(paramsToSign);
