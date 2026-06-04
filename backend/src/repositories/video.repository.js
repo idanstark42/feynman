@@ -9,6 +9,17 @@ class VideoRepository {
     return Video.find(filter)
   }
 
+  async search(query) {
+    return Video.find({
+      $or: [
+        { title: { $regex: query, $options: "i" } },
+        { description: { $regex: query, $options: "i" } },
+        { category: { $regex: query, $options: "i" } },
+        { tags: { $regex: query, $options: "i" } }
+      ]
+    })
+  }
+
   async findById(id) {
     return Video.findById(id)
   }

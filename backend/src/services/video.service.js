@@ -19,16 +19,24 @@ class VideoService {
       title: data.title,
       description: data.description,
       category: data.category,
-      videoUrl: data.videoUrl,
+      tags: data.tags,
       assetId: data.assetId,
-      duration: data.duration
+      videoUrl: data.videoUrl,
+      thumbnailUrl: data.thumbnailUrl,
+      duration: data.duration,
+      isPublished: data.isPublished !== undefined ? data.isPublished : false
     });
   }
 
-  async getVideos() {
+  async getVideos(filters = {}) {
     return videoRepository.findAll({
-      isPublished: true
+      isPublished: true,
+      ...filters
     });
+  }
+
+  async searchVideos(query) {
+    return videoRepository.search(query);
   }
 
   async getVideoById(id) {

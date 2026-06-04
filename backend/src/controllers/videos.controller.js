@@ -18,7 +18,14 @@ class VideosController {
 
   async getAll(req, res, next) {
     endpoint(async () => {
-      const videos = await videoService.getVideos()
+      const videos = await videoService.getVideos(req.query);
+      return { data: videos }
+    }, res, next)
+  }
+
+  async search(req, res, next) {
+    endpoint(async () => {
+      const videos = await videoService.searchVideos(req.query.q);
       return { data: videos }
     }, res, next)
   }

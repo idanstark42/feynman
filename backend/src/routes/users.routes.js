@@ -66,21 +66,22 @@ router.get("/", auth, requireRole(ROLES.ADMIN), usersController.getAll)
 
 /**
  * @openapi
- * /users/{id}/role:
+ * /users/{id}:
  *   patch:
- *     summary: Update user role (admin only)
- *     tags:
- *       - Users
- *     security:
- *       - bearerAuth: []
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
+ *     summary: Update user by ID (admin only)
+ *    tags:
+ *      - Users
+ *    security:
+ *     - bearerAuth: []
+ *    parameters:
+ *     - in: path
+ *      name: id
+ *      required: true
+ *    schema:
+ *      type: string
+ * 
  */
-router.patch("/:id/role", auth, requireRole(ROLES.ADMIN), usersController.updateRole)
+router.patch("/:id", auth, requireRole(ROLES.ADMIN), usersController.update)
 
 /**
  * @openapi

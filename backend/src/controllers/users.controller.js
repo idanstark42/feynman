@@ -33,9 +33,9 @@ class UsersController {
     }, res, next)
   }
 
-  async updateRole(req, res, next) {
+  async update(req, res, next) {
     endpoint(async () => {
-      const updated = await userService.updateUser(req.params.id, { role: req.body.role || ROLES.USER })
+      const updated = await userService.updateUser(req.params.id, req.body)
       return { data: updated }
     }, res, next)
   }

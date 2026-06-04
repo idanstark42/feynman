@@ -16,6 +16,11 @@ const videoSchema = new mongoose.Schema(
       type: String
     },
 
+    tags: {
+      type: [String],
+      default: []
+    },
+
     assetId: {
       type: String,
       required: true
