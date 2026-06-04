@@ -12,7 +12,7 @@ router.get("/search", auth, videosController.search)
 router.get("/:id", auth, videosController.getById)
 router.get("/upload-url", auth, requireRole(ROLES.ADMIN), videosController.getUploadUrl);
 router.post("/", auth, requireRole(ROLES.ADMIN), videosController.create);
-router.patch("/:id", auth, requireRole(ROLES.ADMIN), videosController.update)
+router.put("/:id", auth, requireRole(ROLES.ADMIN), videosController.update)
 router.delete("/:id", auth, requireRole(ROLES.ADMIN), videosController.delete)
 
 export default router

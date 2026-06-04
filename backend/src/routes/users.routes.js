@@ -9,10 +9,10 @@ import { ROLES } from "../constants/roles.js"
 const router = Router()
 
 router.get("/me", auth, usersController.getMe)
-router.patch("/me", auth, usersController.updateMe)
+router.put("/me", auth, usersController.updateMe)
 router.delete("/me", auth, usersController.deleteMe)
 router.get("/", auth, requireRole(ROLES.ADMIN), usersController.getAll)
-router.patch("/:id", auth, requireRole(ROLES.ADMIN), usersController.update)
+router.put("/:id", auth, requireRole(ROLES.ADMIN), usersController.update)
 router.delete("/:id", auth, requireRole(ROLES.ADMIN), usersController.deleteUser)
 
 export default router
