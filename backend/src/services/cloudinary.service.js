@@ -1,20 +1,25 @@
 import { v2 as cloudinary } from "cloudinary"
 import VideoService from "./video-storage.service.js";
 
+const CLOUD_NAME = process.env.CLOUDINARY_CLOUD_NAME;
+const API_KEY = process.env.CLOUDINARY_API_KEY;
+const API_SECRET = process.env.CLOUDINARY_API_SECRET;
+const FOLDER = undefined; // Optional: specify a folder in your Cloudinary account to organize uploads
+
 export class CloudinaryService extends VideoService {
-  constructor({ cloudName, apiKey, apiSecret, folder }) {
-    super();
+  initialize () {
     this.cloudinary = cloudinary;
     this.cloudinary.config({
-      cloud_name: cloudName,
-      api_key: apiKey,
-      api_secret: apiSecret,
+      cloud_name: CLOUD_NAME,
+      api_key: API_KEY,
+      api_secret: API_SECRET,
       secure: true
     });
-    this.folder = folder || 'videos';
+    this.folder = FOLDER || 'videos';
   }
 
   async getUploadUrl(options = {}) {
+    this.initialize();
     const timestamp = Math.round(new Date().getTime() / 1000);
     
     // Define signature parameters for an authenticated direct upload
@@ -45,6 +50,7 @@ export class CloudinaryService extends VideoService {
   }
 
   async getPlaybackUrl(publicId) {
+    this.initialize();
     // Generates a time-restricted tokenized URL for authenticated delivery
     return this.cloudinary.utils.private_download_url(publicId, 'mp4', {
       resource_type: 'video',
@@ -54,6 +60,7 @@ export class CloudinaryService extends VideoService {
   }
 
   async deleteVideo(publicId) {
+    this.initialize();
     try {
       // Cloudinary needs the resource_type explicitly defined as 'video'
       // and the storage type set matching the delivery policy ('authenticated')
@@ -73,8 +80,4 @@ export class CloudinaryService extends VideoService {
   }
 }
 
-export default new CloudinaryService({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET
-})
+export default new CloudinaryService()

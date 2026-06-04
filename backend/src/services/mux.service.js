@@ -1,16 +1,22 @@
 import Mux from '@mux/mux-node';
 import VideoService from "./video-storage.service.js";
 
+const TOKEN_ID = process.env.MUX_TOKEN_ID;
+const TOKEN_SECRET = process.env.MUX_TOKEN_SECRET;
+const SIGNING_KEY_ID = process.env.MUX_SIGNING_KEY_ID;
+const SIGNING_KEY_SECRET = process.env.MUX_SIGNING_KEY_SECRET;
+const CORS_ORIGIN = process.env.FRONTEND_URL;
+
 class MuxService extends VideoService {
-  constructor({ tokenId, tokenSecret, signingKeyId, signingKeySecret, corsOrigin }) {
+  initialize () {
     super();
     // Initialize the official Mux SDK
-    const muxClient = new Mux(tokenId, tokenSecret);
+    const muxClient = new Mux(TOKEN_ID, TOKEN_SECRET);
     this.video = muxClient.Video;
     
-    this.signingKeyId = signingKeyId;
-    this.signingKeySecret = signingKeySecret;
-    this.corsOrigin = corsOrigin || '*';
+    this.signingKeyId = SIGNING_KEY_ID;
+    this.signingKeySecret = SIGNING_KEY_SECRET;
+    this.corsOrigin = CORS_ORIGIN || '*';
   }
 
   async getUploadUrl(options = {}) {
@@ -53,10 +59,4 @@ class MuxService extends VideoService {
   }
 }
 
-export default new MuxService({
-  tokenId: process.env.MUX_TOKEN_ID,
-  tokenSecret: process.env.MUX_TOKEN_SECRET,
-  signingKeyId: process.env.MUX_SIGNING_KEY_ID,
-  signingKeySecret: process.env.MUX_SIGNING_KEY_SECRET,
-  corsOrigin: process.env.FRONTEND_URL
-});
+export default new MuxService();
