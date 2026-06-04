@@ -9,7 +9,7 @@ class VideoService {
     this.videoStorageService = videoStorageService
   }
 
-  async getSignature() {
+  async getUploadSignature() {
     return this.videoStorageService.getUploadSignature()
   }
 
