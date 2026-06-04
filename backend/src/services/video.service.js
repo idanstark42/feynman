@@ -1,7 +1,7 @@
 import fs from "fs"
 
-import videoRepository from "../repositories/video.repository";
-import cloudinaryService from "./cloudinary.service"
+import videoRepository from "../repositories/video.repository.js"
+import cloudinaryService from "./cloudinary.service.js"
 
 class VideoService {
 

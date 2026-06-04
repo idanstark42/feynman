@@ -1,6 +1,6 @@
 import Mux from '@mux/mux-node';
 
-import VideoService from './video-service'
+import VideoService from './video-service.js'
 
 class MuxService extends VideoService {
   constructor({ tokenId, tokenSecret, signingKeyId, signingKeySecret, corsOrigin }) {

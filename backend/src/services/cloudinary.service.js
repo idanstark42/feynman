@@ -1,5 +1,5 @@
 import { v2 as cloudinary } from "cloudinary"
-import VideoService from "./video-service";
+import VideoService from "./video-service.js";
 
 export class CloudinaryService extends VideoService {
   constructor({ cloudName, apiKey, apiSecret, folder }) {
