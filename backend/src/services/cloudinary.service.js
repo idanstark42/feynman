@@ -37,7 +37,7 @@ export class CloudinaryService extends VideoService {
       signatureData: {
         ...paramsToSign,
         signature,
-        api_key: this.cloudinary.config().api_key
+        apiKey: this.cloudinary.config().api_key
       }
     };
   }
