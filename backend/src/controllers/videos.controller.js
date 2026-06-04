@@ -2,9 +2,9 @@ import videoService from "../services/video.service.js"
 import endpoint from "./endpoint.js"
 
 class VideosController {
-  async getSignature(req, res, next) {
+  async getUploadUrl(req, res, next) {
     endpoint(async () => {
-      return await videoService.getUploadSignature()
+      return await videoService.getUploadUrl()
     }, res, next);
   }
 

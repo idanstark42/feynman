@@ -8,7 +8,7 @@ import { ROLES } from "../constants/roles.js"
 const router = Router()
 
 router.get("/", auth, videosController.getAll)
-router.get("/upload-signature", auth, requireRole(ROLES.ADMIN), videosController.getSignature);
+router.get("/upload-url", auth, requireRole(ROLES.ADMIN), videosController.getUploadUrl);
 router.get("/:id", auth, videosController.getById)
 router.post("/", auth, requireRole(ROLES.ADMIN), videosController.create);
 router.patch("/:id", auth, requireRole(ROLES.ADMIN), videosController.update)
